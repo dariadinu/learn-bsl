@@ -8,63 +8,63 @@ import aSign from "/usr/local/bin/learn-bsl/src/images/a.png"
 
 
 export default function App(){
-    const [sign, setSign] = React.useState({
-        signID: "",
-        signName: "",
-        image: "",
-        height:"",
-        width:""
-    })
-
-    const [allSignImages, setAllSignImages] = React.useState(signsData)
-
-    function getSignImage(){
-        let signsArray = allSignImages.data.signs
-        // const signID = "a"
-        console.log("clicked")
-        let url = signsArray[1].url
-        let id1 = signsArray[1].id
-        // const path = signsArray[1].path
-        console.log(url)
-        // import aSign from "/usr/local/bin/learn-bsl/src/images/a.png"
-        setSign(prevSign => ({
-            ...prevSign,
-            image: url,
-            height: 200,
-            width: 200,
-            signID: id1
-        }))
-
-  }
-    function validateInput() {
-        let x = document.forms["inputForm"]["signGuessed"].value;
-        let img = document.getElementById("a");
-        // console.log(img.id)
-        if (x == img.id) {
-            alert("Correct");
-            return true;
-        }
-        else {
-            alert("Wrong!")
-        }
-    }
+  //   const [sign, setSign] = React.useState({
+  //       signID: "",
+  //       signName: "",
+  //       image: "",
+  //       height:"",
+  //       width:""
+  //   })
+  //
+  //   const [allSignImages, setAllSignImages] = React.useState(signsData)
+  //
+  //   function getSignImage(){
+  //       let signsArray = allSignImages.data.signs
+  //       // const signID = "a"
+  //       console.log("clicked")
+  //       let url = signsArray[1].url
+  //       let id1 = signsArray[1].id
+  //       // const path = signsArray[1].path
+  //       console.log(url)
+  //       // import aSign from "/usr/local/bin/learn-bsl/src/images/a.png"
+  //       setSign(prevSign => ({
+  //           ...prevSign,
+  //           image: url,
+  //           height: 200,
+  //           width: 200,
+  //           signID: id1
+  //       }))
+  //
+  // }
+  //   function validateInput() {
+  //       let x = document.forms["inputForm"]["signGuessed"].value;
+  //       let img = document.getElementById("a");
+  //       // console.log(img.id)
+  //       if (x == img.id) {
+  //           alert("Correct");
+  //           return true;
+  //       }
+  //       else {
+  //           alert("Wrong!")
+  //       }
+  //   }
   return (
       <main>
 
         <div className="form" >
             <h1>Guess the sign! </h1>
-            {/*<GameBox>*/}
-            <Button onClick={getSignImage}>
-            Get sign image
-            </Button>
-            <br/>
+            {/*/!*<GameBox>*!/*/}
+            {/*<Button onClick={getSignImage}>*/}
+            {/*Get sign image*/}
+            {/*</Button>*/}
+            {/*<br/>*/}
 
-            <img src={sign.image} height={sign.height} id="a"/>
+            {/*<img src={sign.image} height={sign.height} id="a"/>*/}
 
-            <br/>
-            <form name="inputForm" onSubmit={validateInput}>
-            <input type="text" name="signGuessed" placeholder="Enter your guess here!"/>
-            </form>
+            {/*<br/>*/}
+            {/*<form name="inputForm" onSubmit={validateInput}>*/}
+            {/*<input type="text" name="signGuessed" placeholder="Enter your guess here!"/>*/}
+            {/*</form>*/}
 
 
             {/*</GameBox>*/}
