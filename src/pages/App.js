@@ -5,6 +5,7 @@ import { db } from "../utils/firebase";
 import { Header } from "../components/Header";
 import { Box, Button, Stack, TextField } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const App = () => {
   const generateRandomLetter = () => {
@@ -25,12 +26,36 @@ const App = () => {
 
   const validateInput = () => {
     if (guess.toLowerCase() === currentLetter.toLowerCase()) {
-      alert("Correct");
-
+      // alert("Correct");
+      toast.success("Correct!", {
+        position: "top-center",
+        autoClose: 500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       setCurrentLetter(generateRandomLetter);
     } else {
-      alert("Wrong!");
+      toast.error("Try again!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
+  };
+
+  const handleSubmit = (event) => {
+    console.log("handleSubmit ran");
+    event.preventDefault(); // prevent page refresh
+    setGuess("");
   };
 
   useEffect(() => {
@@ -42,21 +67,29 @@ const App = () => {
       <div>
         <Header />
         <Stack>
-          <Box>
-            <TextField
-              id="outlined-basic"
-              label="Enter your guess here!"
-              variant="outlined"
-              onChange={(event) => {
-                setGuess(event.target.value);
-              }}
-            />
-            <Button variant="contained" onClick={validateInput}>
-              Verify guess
-            </Button>
-          </Box>
-
           {data && <img style={{ width: "20%" }} src={data.url}></img>}
+          <Box>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                label="Enter your guess here"
+                value={guess}
+                onChange={(event) => {
+                  setGuess(event.target.value);
+                }}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={validateInput}
+                onKeyDown={validateInput}
+              >
+                Verify guess
+              </Button>
+              <ToastContainer />
+            </form>
+          </Box>
         </Stack>
       </div>
     </main>
