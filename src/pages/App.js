@@ -4,9 +4,16 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { Header } from "../components/Header";
 import { Box, Button, Stack, TextField } from "@mui/material";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [currentLetter, setCurrentLetter] = useState("A");
+  const generateRandomLetter = () => {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
+  };
+
+  const [currentLetter, setCurrentLetter] = useState(generateRandomLetter);
   const [data, setData] = useState();
   const [guess, setGuess] = useState("");
 
@@ -17,9 +24,10 @@ const App = () => {
   };
 
   const validateInput = () => {
-    if (guess === currentLetter) {
+    if (guess.toLowerCase() === currentLetter.toLowerCase()) {
       alert("Correct");
-      setCurrentLetter("B");
+
+      setCurrentLetter(generateRandomLetter);
     } else {
       alert("Wrong!");
     }
