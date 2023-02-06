@@ -3,11 +3,20 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { Header } from "../components/Header";
-import { Box, Button, Stack, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  FormGroup,
+  Stack,
+  Switch,
+  TextField,
+} from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const App = () => {
+  // const label = { "aria-label": "Switch demo" };
   const generateRandomLetter = () => {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -17,6 +26,10 @@ const App = () => {
   const [currentLetter, setCurrentLetter] = useState(generateRandomLetter);
   const [data, setData] = useState();
   const [guess, setGuess] = useState("");
+  let [count, setCount] = useState(0);
+  let [checked, setChecked] = useState(true);
+  const [checkHand, setCheckHand] = useState("none");
+  const [hand, setHand] = useState("Right Handed Alphabet");
 
   const getDataForLetterFromDB = async (letter) => {
     const docRef = doc(db, "right-signs-alphabet", "letter" + letter);
@@ -38,6 +51,7 @@ const App = () => {
         theme: "light",
       });
       setCurrentLetter(generateRandomLetter);
+      setCount(count + 1);
     } else {
       toast.error("Try again!", {
         position: "top-center",
@@ -58,6 +72,21 @@ const App = () => {
     setGuess("");
   };
 
+  const refreshGame = () => {
+    setCount(0);
+  };
+
+  const switchHandler = (e) => {
+    setChecked(e.target.checked);
+    if (e.target.checked === false) {
+      setCheckHand("scaleX(-1)");
+      setHand("Left Handed Alphabet");
+    } else {
+      setCheckHand("none");
+      setHand("Right Handed Alphabet");
+    }
+  };
+
   useEffect(() => {
     getDataForLetterFromDB(currentLetter);
   }, [currentLetter]);
@@ -66,8 +95,28 @@ const App = () => {
     <main>
       <div>
         <Header />
+        <h2>Correct guesses: {count}</h2>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={checked}
+                onChange={switchHandler}
+                name="right/left"
+              />
+            }
+            label={hand}
+          />
+        </FormGroup>
+
         <Stack>
-          {data && <img style={{ width: "20%" }} src={data.url}></img>}
+          {data && (
+            <img
+              style={{ width: "20%", transform: checkHand }}
+              src={data.url}
+              alt={"hand sign"}
+            ></img>
+          )}
           <Box>
             <form onSubmit={handleSubmit}>
               <TextField
@@ -91,6 +140,9 @@ const App = () => {
             </form>
           </Box>
         </Stack>
+        <Button variant="outlined" onClick={refreshGame}>
+          New game
+        </Button>
       </div>
     </main>
   );
