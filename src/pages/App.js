@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
-import { Header } from "../components/Header";
 import {
   Box,
   Button,
@@ -14,6 +13,7 @@ import {
 } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
+import { ButtonAppBar } from "../components/Header";
 
 const App = () => {
   // const label = { "aria-label": "Switch demo" };
@@ -94,7 +94,8 @@ const App = () => {
   return (
     <main>
       <div>
-        <Header />
+        <ButtonAppBar />
+        <h1>Guess the letter!</h1>
         <h2>Correct guesses: {count}</h2>
         <FormGroup>
           <FormControlLabel
