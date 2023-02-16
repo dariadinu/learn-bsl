@@ -22,7 +22,7 @@ export const ButtonAppBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Learn BSL
+            <a href={"/"}>Learn BSL</a>
           </Typography>
           <a href={"/"}>
             <Button color="inherit">Alphabet</Button>

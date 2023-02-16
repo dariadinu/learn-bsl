@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { ButtonAppBar } from "../components/Header";
 import {
+  Button,
   FormControlLabel,
   FormGroup,
   ImageList,
   ImageListItem,
   Switch,
+  TextField,
 } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
@@ -13,7 +15,43 @@ import { toast, ToastContainer } from "react-toastify";
 
 export const NewPage = () => {
   const [guessedWord, setGuessedWord] = useState("");
-  const wordList = ["mark", "tank", "bank", "chad"];
+  const wordList = [
+    "mark",
+    "tank",
+    "bank",
+    "chad",
+    "tiger",
+    "Bake",
+    "Word",
+    "List",
+    "Four",
+    "Five",
+    "Nine",
+    "Good",
+    "Best",
+    "Cute",
+    "Zero",
+    "Huge",
+    "Cool",
+    "Tree",
+    "Race",
+    "Rice",
+    "Keep",
+    "Lace",
+    "Beam",
+    "Game",
+    "Mars",
+    "Tide",
+    "Ride",
+    "Hide",
+    "Exit",
+    "Hope",
+    "Cold",
+    "From",
+    "Need",
+    "Stay",
+    "Come",
+  ];
   const [itemData, setItemData] = useState([]);
   let [checked, setChecked] = useState(true);
   const [checkHand, setCheckHand] = useState("none");
@@ -31,7 +69,7 @@ export const NewPage = () => {
   };
 
   const chooseRandomWord = () => {
-    const word = wordList[Math.floor(Math.random() * wordList.length)];
+    let word = wordList[Math.floor(Math.random() * wordList.length)];
     return word;
   };
 
@@ -61,14 +99,13 @@ export const NewPage = () => {
     event.preventDefault(); // prevent page refresh
     setGuessedWord("");
     setItemData([]);
-    setWord(chooseRandomWord);
     populateItemData();
   };
 
-  const onChangeInput = (e) => {
-    console.log(e.target.value);
-    setGuessedWord(e.target.value);
-    if (e.target.value === word) {
+  const validateInput = () => {
+    // console.log(e.target.value);
+    // setGuessedWord(e.target.value);
+    if (guessedWord.toLowerCase() === word.toLowerCase()) {
       console.log("bravo");
       // alert("correct");
       toast.success("Correct!", {
@@ -81,6 +118,18 @@ export const NewPage = () => {
         progress: undefined,
         theme: "light",
       });
+      setWord(chooseRandomWord);
+    } else {
+      toast.error("Try again!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -88,7 +137,9 @@ export const NewPage = () => {
     <main>
       <ButtonAppBar />
       <h1>Guess the word!</h1>
-      <button onClick={populateItemData}>Get a word</button>
+      <Button variant="outlined" onClick={populateItemData}>
+        Start game!
+      </Button>
       <FormGroup>
         <FormControlLabel
           control={
@@ -101,7 +152,13 @@ export const NewPage = () => {
           label={hand}
         />
       </FormGroup>
-      <ImageList sx={{ width: 500, height: 450 }} rowHeight={164}>
+      {/*  deci arata bine cu 500 si 100 */}
+      <ImageList
+        sx={{ width: 500, height: 100 }}
+        // rowHeight={164}
+        variant="string"
+        cols={word.length}
+      >
         {itemData.map((item) => (
           <ImageListItem key={item.id}>
             <img
@@ -113,17 +170,35 @@ export const NewPage = () => {
         ))}
       </ImageList>
       <h3>Enter your guess here:</h3>
+      {/*<form onSubmit={handleSubmit}>*/}
+      {/*  <input*/}
+      {/*    onChange={onChangeInput}*/}
+      {/*    value={guessedWord}*/}
+      {/*    // onSubmit={handleSubmit}*/}
+      {/*  ></input>*/}
+      {/*  <h4>Press enter to generate new word.</h4>*/}
+      {/*</form>*/}
+      {/*<ToastContainer />*/}
       <form onSubmit={handleSubmit}>
-        <input
-          onChange={onChangeInput}
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          label="Enter your guess here"
           value={guessedWord}
-          // onSubmit={handleSubmit}
-        ></input>
-        <h4>Press enter to generate new word.</h4>
+          onChange={(event) => {
+            setGuessedWord(event.target.value);
+          }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          onClick={validateInput}
+          onKeyDown={validateInput}
+        >
+          Verify guess
+        </Button>
+        <ToastContainer />
       </form>
-      <ToastContainer />
-
-      <a href={"/"}>Go to home</a>
     </main>
   );
 };
