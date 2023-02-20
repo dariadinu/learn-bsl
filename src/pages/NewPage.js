@@ -170,15 +170,6 @@ export const NewPage = () => {
         ))}
       </ImageList>
       <h3>Enter your guess here:</h3>
-      {/*<form onSubmit={handleSubmit}>*/}
-      {/*  <input*/}
-      {/*    onChange={onChangeInput}*/}
-      {/*    value={guessedWord}*/}
-      {/*    // onSubmit={handleSubmit}*/}
-      {/*  ></input>*/}
-      {/*  <h4>Press enter to generate new word.</h4>*/}
-      {/*</form>*/}
-      {/*<ToastContainer />*/}
       <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-basic"

@@ -17,6 +17,9 @@ export const Home = () => {
       <h1>
         Go to game 2 <a href={"/new-game"}>GO</a>
       </h1>
+      <h1>
+        Go to game 3 <a href={"/MemoryGame"}>GO</a>
+      </h1>
     </div>
   );
 };
