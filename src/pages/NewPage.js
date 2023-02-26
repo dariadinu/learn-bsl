@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonAppBar } from "../components/Header";
 import {
   Button,
@@ -133,6 +133,10 @@ export const NewPage = () => {
     }
   };
 
+  useEffect(() => {
+    populateItemData();
+  }, []);
+
   return (
     <main>
       <ButtonAppBar />
@@ -159,8 +163,8 @@ export const NewPage = () => {
         variant="string"
         cols={word.length}
       >
-        {itemData.map((item) => (
-          <ImageListItem key={item.id}>
+        {itemData.map((item, index) => (
+          <ImageListItem key={item.id + index}>
             <img
               src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
               alt={item.id}

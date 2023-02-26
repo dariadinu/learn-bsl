@@ -1,10 +1,6 @@
 import React from "react";
 import { ButtonAppBar } from "../components/Header";
 
-function Header() {
-  return null;
-}
-
 export const Home = () => {
   return (
     <div>
