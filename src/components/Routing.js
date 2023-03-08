@@ -3,6 +3,10 @@ import App from "../pages/App";
 import { NewPage } from "../pages/NewPage";
 import { Home } from "../pages/Home";
 import { MemoryGame } from "../pages/MemoryGame";
+import { Lessons } from "../pages/Lessons";
+import { Games } from "../pages/Games";
+import { Dictionary } from "/usr/local/bin/learn-bsl/src/pages/Dictionary.js";
+import { Alphabet } from "../pages/Alphabet";
 
 export const Routing = () => {
   return (
@@ -12,6 +16,10 @@ export const Routing = () => {
         <Route path="/game1" element={<App />} />
         <Route path="/new-game" element={<NewPage />} />
         <Route path="/MemoryGame" element={<MemoryGame />} />
+        <Route path="/Lessons" element={<Lessons />} />
+        <Route path="/Games" element={<Games />} />
+        <Route path="/Dictionary" element={<Dictionary />} />
+        <Route path="/Alphabet" element={<Alphabet />} />
         {/*<Route index element={<Home />} />*/}
         {/*<Route path="blogs" element={<Blogs />} />*/}
         {/*<Route path="contact" element={<Contact />} />*/}

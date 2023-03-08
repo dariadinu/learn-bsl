@@ -10,10 +10,12 @@ import {
   Stack,
   Switch,
   TextField,
+  ThemeProvider,
 } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { ButtonAppBar } from "../components/Header";
+import theme from "../utils/theme";
 
 const App = () => {
   // const label = { "aria-label": "Switch demo" };
@@ -93,58 +95,60 @@ const App = () => {
 
   return (
     <main>
-      <div>
-        <ButtonAppBar />
-        <h1>Guess the letter!</h1>
-        <h2>Correct guesses: {count}</h2>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={checked}
-                onChange={switchHandler}
-                name="right/left"
-              />
-            }
-            label={hand}
-          />
-        </FormGroup>
+      <ThemeProvider theme={theme}>
+        <div>
+          <ButtonAppBar />
+          <h1>Guess the letter!</h1>
+          <h2>Correct guesses: {count}</h2>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={checked}
+                  onChange={switchHandler}
+                  name="right/left"
+                />
+              }
+              label={hand}
+            />
+          </FormGroup>
 
-        <Stack>
-          {data && (
-            <img
-              style={{ width: "20%", transform: checkHand }}
-              src={data.url}
-              alt={"hand sign"}
-            ></img>
-          )}
-          <Box>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                label="Enter your guess here"
-                value={guess}
-                onChange={(event) => {
-                  setGuess(event.target.value);
-                }}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                onClick={validateInput}
-                onKeyDown={validateInput}
-              >
-                Verify guess
-              </Button>
-              <ToastContainer />
-            </form>
-          </Box>
-        </Stack>
-        <Button variant="outlined" onClick={refreshGame}>
-          New game
-        </Button>
-      </div>
+          <Stack>
+            {data && (
+              <img
+                style={{ width: "20%", transform: checkHand }}
+                src={data.url}
+                alt={"hand sign"}
+              ></img>
+            )}
+            <Box>
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  id="outlined-basic"
+                  variant="outlined"
+                  label="Enter your guess here"
+                  value={guess}
+                  onChange={(event) => {
+                    setGuess(event.target.value);
+                  }}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  onClick={validateInput}
+                  onKeyDown={validateInput}
+                >
+                  Verify guess
+                </Button>
+                <ToastContainer />
+              </form>
+            </Box>
+          </Stack>
+          <Button variant="outlined" onClick={refreshGame}>
+            New game
+          </Button>
+        </div>
+      </ThemeProvider>
     </main>
   );
 };

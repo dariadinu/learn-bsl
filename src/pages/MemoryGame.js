@@ -7,11 +7,13 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  ThemeProvider,
 } from "@mui/material";
 import Card from "./Card";
 import { ButtonAppBar } from "../components/Header";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
+import theme from "../utils/theme";
 
 function shuffleCards(array) {
   if (!array || array.length === 0) return [];
@@ -79,9 +81,6 @@ export const MemoryGame = () => {
     const temp = [];
     for (let i = 0; i < letters.length; i++) {
       const dataForLetter = await getDataForLetterFromDB(letters[i]);
-      // console.log("i este ", i);
-      // console.log("data letter is ", dataForLetter);
-      // console.log("data letter url is ", dataForLetter.url);
       temp.push({
         type: letters[i],
         id: letters[i],
@@ -167,73 +166,75 @@ export const MemoryGame = () => {
   };
 
   return (
-    <div className="App">
-      <ButtonAppBar />
-      <header>
-        <h1>Memory Game!</h1>
-        <div>
-          Select two cards with same content consequtively to make them vanish
-        </div>
-      </header>
-
-      <div className="container">
-        {cards.map((card, index) => {
-          return (
-            <Card
-              key={index}
-              card={card}
-              index={index}
-              isDisabled={shouldDisableAllCards}
-              isInactive={checkIsInactive(card)}
-              isFlipped={checkIsFlipped(index)}
-              onClick={handleCardClick}
-            />
-          );
-        })}
-      </div>
-      <footer>
-        <div className="score">
-          <div className="moves">
-            <span className="bold">Moves:</span> {moves}
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <ButtonAppBar />
+        <header>
+          <h1>Memory Game!</h1>
+          <div>
+            Select two cards with same content consequtively to make them vanish
           </div>
-          {localStorage.getItem("bestScore") && (
-            <div className="high-score">
-              <span className="bold">Best Score:</span> {bestScore}
+        </header>
+
+        <div className="container">
+          {cards.map((card, index) => {
+            return (
+              <Card
+                key={index}
+                card={card}
+                index={index}
+                isDisabled={shouldDisableAllCards}
+                isInactive={checkIsInactive(card)}
+                isFlipped={checkIsFlipped(index)}
+                onClick={handleCardClick}
+              />
+            );
+          })}
+        </div>
+        <footer>
+          <div className="score">
+            <div className="moves">
+              <span className="bold">Moves:</span> {moves}
             </div>
-          )}
-        </div>
-        <div className="restart">
-          <Button onClick={handleRestart} color="primary" variant="contained">
-            Restart
-          </Button>
-        </div>
-      </footer>
-      <Dialog
-        open={showModal}
-        disableEscapeKeyDown
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Hurray!!! You completed the challenge
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            You completed the game in {moves} moves. Your best score is{" "}
-            {bestScore} moves.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              handleRestart();
-            }}
-            color="primary"
-          >
-            Restart
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+            {localStorage.getItem("bestScore") && (
+              <div className="high-score">
+                <span className="bold">Best Score:</span> {bestScore}
+              </div>
+            )}
+          </div>
+          <div className="restart">
+            <Button onClick={handleRestart} color="primary" variant="contained">
+              Restart
+            </Button>
+          </div>
+        </footer>
+        <Dialog
+          open={showModal}
+          disableEscapeKeyDown
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Hurray!!! You completed the challenge
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              You completed the game in {moves} moves. Your best score is{" "}
+              {bestScore} moves.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                handleRestart();
+              }}
+              color="primary"
+            >
+              Restart
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    </ThemeProvider>
   );
 };

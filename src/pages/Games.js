@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-export const Home = () => {
+export const Games = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
@@ -23,7 +23,7 @@ export const Home = () => {
           direction="column"
           justifyContent="center"
           alignItems="center"
-          // justify="center"
+          justify="center"
           style={{ minHeight: "100vh" }}
         >
           <Grid item xs>
@@ -31,20 +31,20 @@ export const Home = () => {
             <img src={myLogo}></img>
           </Grid>
           <Grid item xs>
-            <a href={"/Lessons"}>
-              <Item>Lessons</Item>
+            <a href={"/game1"}>
+              <Item>Fingerspelling Challenge</Item>
             </a>
           </Grid>
 
           <Grid item xs>
             <Item>
-              <a href={"/Games"}>Games</a>
+              <a href={"/new-game"}>Guess the words</a>
             </Item>
           </Grid>
 
           <Grid item xs>
             <Item>
-              <a href={"/Dictionary"}>Dictionary</a>
+              <a href={"/MemoryGame"}>Memory Game</a>
             </Item>
           </Grid>
         </Grid>

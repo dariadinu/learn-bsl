@@ -8,10 +8,12 @@ import {
   ImageListItem,
   Switch,
   TextField,
+  ThemeProvider,
 } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { toast, ToastContainer } from "react-toastify";
+import theme from "../utils/theme";
 
 export const NewPage = () => {
   const [guessedWord, setGuessedWord] = useState("");
@@ -139,61 +141,77 @@ export const NewPage = () => {
 
   return (
     <main>
-      <ButtonAppBar />
-      <h1>Guess the word!</h1>
-      <Button variant="outlined" onClick={populateItemData}>
-        Start game!
-      </Button>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={checked}
-              onChange={switchHandler}
-              name="right/left"
-            />
-          }
-          label={hand}
-        />
-      </FormGroup>
-      {/*  deci arata bine cu 500 si 100 */}
-      <ImageList
-        sx={{ width: 500, height: 100 }}
-        // rowHeight={164}
-        variant="string"
-        cols={word.length}
-      >
-        {itemData.map((item, index) => (
-          <ImageListItem key={item.id + index}>
-            <img
-              src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
-              alt={item.id}
-              style={{ transform: checkHand }}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-      <h3>Enter your guess here:</h3>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="Enter your guess here"
-          value={guessedWord}
-          onChange={(event) => {
-            setGuessedWord(event.target.value);
-          }}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          onClick={validateInput}
-          onKeyDown={validateInput}
+      {/*<Box*/}
+      {/*  component="span"*/}
+      {/*  // sx={{*/}
+      {/*  //   align: "center",*/}
+      {/*  //   width: 300,*/}
+      {/*  //   height: 300,*/}
+      {/*  //   backgroundColor: "primary.dark",*/}
+      {/*  //   "&:hover": {*/}
+      {/*  //     backgroundColor: "primary.main",*/}
+      {/*  //     opacity: [0.9, 0.8, 0.7],*/}
+      {/*  //   },*/}
+      {/*  // }}*/}
+      {/*>*/}
+      <ThemeProvider theme={theme}>
+        <ButtonAppBar />
+        <h1>Guess the word!</h1>
+        {/*<Button variant="outlined" onClick={populateItemData}>*/}
+        {/*  Start game!*/}
+        {/*</Button>*/}
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={checked}
+                onChange={switchHandler}
+                name="right/left"
+              />
+            }
+            label={hand}
+          />
+        </FormGroup>
+        {/*  deci arata bine cu 500 si 100 */}
+        <ImageList
+          sx={{ width: 500, height: 100 }}
+          // rowHeight={164}
+          variant="string"
+          cols={word.length}
         >
-          Verify guess
-        </Button>
-        <ToastContainer />
-      </form>
+          {itemData.map((item, index) => (
+            <ImageListItem key={item.id + index}>
+              <img
+                src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
+                alt={item.id}
+                style={{ transform: checkHand }}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+        <h3>Enter your guess here:</h3>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            label="Enter your guess here"
+            value={guessedWord}
+            onChange={(event) => {
+              setGuessedWord(event.target.value);
+            }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={validateInput}
+            onKeyDown={validateInput}
+          >
+            Verify guess
+          </Button>
+          <ToastContainer />
+        </form>
+      </ThemeProvider>
+      {/*</Box>*/}
     </main>
   );
 };
