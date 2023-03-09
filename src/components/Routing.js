@@ -20,10 +20,6 @@ export const Routing = () => {
         <Route path="/Games" element={<Games />} />
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Alphabet" element={<Alphabet />} />
-        {/*<Route index element={<Home />} />*/}
-        {/*<Route path="blogs" element={<Blogs />} />*/}
-        {/*<Route path="contact" element={<Contact />} />*/}
-        {/*<Route path="*" element={<NoPage />} />*/}
       </Routes>
     </BrowserRouter>
   );

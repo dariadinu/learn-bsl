@@ -26,7 +26,9 @@ export const ButtonAppBar = () => {
             </Typography>
             <a href={"/"}>
               <Button color="inherit">
-                <SortByAlphaIcon></SortByAlphaIcon>
+                <a href={"/Alphabet"}>
+                  <SortByAlphaIcon></SortByAlphaIcon>
+                </a>
               </Button>
             </a>
           </Toolbar>
