@@ -7,6 +7,7 @@ import { Lessons } from "../pages/Lessons";
 import { Games } from "../pages/Games";
 import { Dictionary } from "/usr/local/bin/learn-bsl/src/pages/Dictionary.js";
 import { Alphabet } from "../pages/Alphabet";
+import { FamilyLesson } from "../pages/FamilyLesson";
 
 export const Routing = () => {
   return (
@@ -20,6 +21,7 @@ export const Routing = () => {
         <Route path="/Games" element={<Games />} />
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Alphabet" element={<Alphabet />} />
+        <Route path="/FamilyLesson" element={<FamilyLesson />} />
       </Routes>
     </BrowserRouter>
   );

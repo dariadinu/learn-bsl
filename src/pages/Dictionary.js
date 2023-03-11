@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { ButtonAppBar } from "../components/Header";
 import {
+  Button,
+  FormControlLabel,
+  FormGroup,
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Switch,
   ThemeProvider,
 } from "@mui/material";
 import theme from "../utils/theme";
@@ -25,64 +29,64 @@ export const Dictionary = () => {
 
     console.log(imageType);
   }
+  let [checked, setChecked] = useState(true);
+  const [checkHand, setCheckHand] = useState("none");
+  const [hand, setHand] = useState("Right Handed Alphabet");
+
+  const switchHandler = (e) => {
+    setChecked(e.target.checked);
+    if (e.target.checked === false) {
+      setCheckHand("scaleX(-1)");
+      setHand("Left Handed Alphabet");
+    } else {
+      setCheckHand("none");
+      setHand("Right Handed Alphabet");
+    }
+  };
 
   return (
     <main>
       <ThemeProvider theme={theme}>
         <ButtonAppBar />
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={checked}
+                onChange={switchHandler}
+                name="right/left"
+              />
+            }
+            label={hand}
+          />
+        </FormGroup>
         <h1>Filter on topics:</h1>
 
         {buttons &&
           buttons.map((type, index) => (
             <>
-              <button key={index} value={type.value} onClick={handleImage}>
+              <Button key={index} value={type.value} onClick={handleImage}>
                 {type.name}
-              </button>
+              </Button>
             </>
           ))}
-        {/*<img*/}
-        {/*  src={require("/usr/local/bin/learn-bsl/src/images/family/father.png")}*/}
-        {/*></img>*/}
+
         <ImageList gap={10} variant="string" cols={9}>
           {filteredImages &&
             filteredImages.map((item, index) => (
               <ImageListItem key={item.id + index}>
-                <img src={item.path} alt={item.id} />
-                <ImageListItemBar position="top" title={item.id} />
+                <img
+                  src={item.path}
+                  alt={item.id}
+                  style={{ transform: checkHand }}
+                />
+                <ImageListItemBar
+                  position="top"
+                  title={item.id.toUpperCase()}
+                />
               </ImageListItem>
             ))}
         </ImageList>
-        {/*<Grid*/}
-        {/*  container*/}
-        {/*  spacing={1}*/}
-        {/*  direction="row"*/}
-        {/*  justifyContent="center"*/}
-        {/*  alignItems="center"*/}
-        {/*  justify="center"*/}
-        {/*  style={{ minHeight: "100vh" }}*/}
-        {/*>*/}
-        {/*<Grid item xs>*/}
-        {/*  {" "}*/}
-        {/*  /!*<img src={myLogo}></img>*!/*/}
-        {/*</Grid>*/}
-
-        {/*<div id="filters" className="button-group">*/}
-        {/*  <button className="button" data-filter=".all">*/}
-        {/*    all*/}
-        {/*  </button>*/}
-        {/*  <button className="button" data-filter=".alphabet">*/}
-        {/*    alphabet*/}
-        {/*  </button>*/}
-        {/*  <button className="button" data-filter=".colours">*/}
-        {/*    colours*/}
-        {/*  </button>*/}
-        {/*  <button className="button" data-filter=".greetings">*/}
-        {/*    greetings*/}
-        {/*  </button>*/}
-        {/*  <button className="button" data-filter=".family">*/}
-        {/*    family*/}
-        {/*  </button>*/}
-        {/*</div>*/}
       </ThemeProvider>
     </main>
   );

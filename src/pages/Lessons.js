@@ -34,10 +34,9 @@ export const Lessons = () => {
           </Grid>
 
           <Grid item xs>
-            <Item>Fruits</Item>
-          </Grid>
-          <Grid item xs>
-            <Item>Family</Item>
+            <Item>
+              <a href={"/FamilyLesson"}>Family</a>
+            </Item>
           </Grid>
         </Grid>
       </ThemeProvider>
