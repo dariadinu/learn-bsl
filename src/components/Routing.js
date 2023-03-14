@@ -5,7 +5,7 @@ import { Home } from "../pages/Home";
 import { MemoryGame } from "../pages/MemoryGame";
 import { Lessons } from "../pages/Lessons";
 import { Games } from "../pages/Games";
-import { Dictionary } from "/usr/local/bin/learn-bsl/src/pages/Dictionary.js";
+import { Dictionary } from "../pages/Dictionary.js";
 import { Alphabet } from "../pages/Alphabet";
 import { FamilyLesson } from "../pages/FamilyLesson";
 import * as PropTypes from "prop-types";
