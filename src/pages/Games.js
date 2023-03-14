@@ -2,7 +2,7 @@ import React from "react";
 import { ButtonAppBar } from "../components/Header";
 import { Grid, Paper, styled, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
-import myLogo from "/usr/local/bin/learn-bsl/src/images/Learn.png";
+import myLogo from "../images/Learn.png";
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
