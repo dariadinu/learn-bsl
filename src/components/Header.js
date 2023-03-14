@@ -24,11 +24,9 @@ export const ButtonAppBar = () => {
                 <HomeIcon fontSize="large"></HomeIcon>{" "}
               </a>
             </Typography>
-            <a href={"/"}>
+            <a href={"/Alphabet"}>
               <Button color="inherit">
-                <a href={"/Alphabet"}>
-                  <SortByAlphaIcon></SortByAlphaIcon>
-                </a>
+                <SortByAlphaIcon></SortByAlphaIcon>
               </Button>
             </a>
           </Toolbar>

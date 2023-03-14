@@ -8,7 +8,14 @@ import { Games } from "../pages/Games";
 import { Dictionary } from "/usr/local/bin/learn-bsl/src/pages/Dictionary.js";
 import { Alphabet } from "../pages/Alphabet";
 import { FamilyLesson } from "../pages/FamilyLesson";
+import * as PropTypes from "prop-types";
+import { FamilyQuiz } from "../pages/FamilyQuiz";
 
+function QuizPage(props) {
+  return null;
+}
+
+QuizPage.propTypes = { module: PropTypes.any };
 export const Routing = () => {
   return (
     <BrowserRouter>
@@ -22,6 +29,7 @@ export const Routing = () => {
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Alphabet" element={<Alphabet />} />
         <Route path="/FamilyLesson" element={<FamilyLesson />} />
+        <Route path="/FamilyQuiz" element={<FamilyQuiz />} />
       </Routes>
     </BrowserRouter>
   );

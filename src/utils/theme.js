@@ -5,14 +5,14 @@ const theme = createTheme({
     danger: "#64748B",
   },
   palette: {
-    secondary: {
+    primary: {
       light: "#bed9ff",
       main: "#0278FF",
       dark: "#001aa6",
       contrastText: "#fff",
       contrastThreshold: 4.5,
     },
-    primary: {
+    secondary: {
       light: "#ffb54c",
       main: "#FF8902",
       darker: "#ea4c05",

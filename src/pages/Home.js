@@ -31,9 +31,10 @@ export const Home = () => {
             <img src={myLogo}></img>
           </Grid>
           <Grid item xs>
-            <a href={"/Lessons"}>
-              <Item>Lessons</Item>
-            </a>
+            <Item>
+              {" "}
+              <a href={"/Lessons"}> Lessons </a>
+            </Item>
           </Grid>
 
           <Grid item xs>

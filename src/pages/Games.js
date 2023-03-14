@@ -31,9 +31,10 @@ export const Games = () => {
             <img src={myLogo}></img>
           </Grid>
           <Grid item xs>
-            <a href={"/game1"}>
-              <Item>Fingerspelling Challenge</Item>
-            </a>
+            <Item>
+              {" "}
+              <a href={"/game1"}> Fingerspelling Challenge </a>{" "}
+            </Item>
           </Grid>
 
           <Grid item xs>
