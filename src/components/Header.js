@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import myLogo from "/usr/local/bin/learn-bsl/src/images/Learn.png";
+import myLogo from "../images/Learn.png";
 import { ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
 import HomeIcon from "@mui/icons-material/Home";
