@@ -10,7 +10,6 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import Card from "./Card";
-import { ButtonAppBar } from "../components/Header";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import theme from "../utils/theme";
@@ -168,7 +167,6 @@ export const MemoryGame = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <ButtonAppBar />
         <header>
           <h1>Memory Game!</h1>
           <div>

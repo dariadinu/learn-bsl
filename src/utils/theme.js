@@ -1,12 +1,15 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  typography: {
+    fontFamily: "Anek Malayalam",
+  },
   status: {
     danger: "#64748B",
   },
   palette: {
     primary: {
-      light: "#bed9ff",
+      light: "#bed9fa",
       main: "#0278FF",
       dark: "#001aa6",
       contrastText: "#fff",

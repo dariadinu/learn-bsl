@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-import { ButtonAppBar } from "../components/Header";
 import theme from "../utils/theme";
+import "./familyQuiz.css";
 
 const App = () => {
   // const label = { "aria-label": "Switch demo" };
@@ -96,8 +96,7 @@ const App = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <div>
-          <ButtonAppBar />
+        <div className="game-container">
           <h1>Guess the letter!</h1>
           <h2>Correct guesses: {count}</h2>
           <FormGroup>

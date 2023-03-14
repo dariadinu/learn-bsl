@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ButtonAppBar } from "../components/Header";
 import {
   Button,
   FormControlLabel,
@@ -47,46 +46,47 @@ export const Dictionary = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <ButtonAppBar />
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={checked}
-                onChange={switchHandler}
-                name="right/left"
-              />
-            }
-            label={hand}
-          />
-        </FormGroup>
-        <h1>Filter on topics:</h1>
-
-        {buttons &&
-          buttons.map((type, index) => (
-            <>
-              <Button key={index} value={type.value} onClick={handleImage}>
-                {type.name}
-              </Button>
-            </>
-          ))}
-
-        <ImageList gap={10} variant="string" cols={9}>
-          {filteredImages &&
-            filteredImages.map((item, index) => (
-              <ImageListItem key={item.id + index}>
-                <img
-                  src={item.path}
-                  alt={item.id}
-                  style={{ transform: checkHand }}
+        <div className="dictionary-container">
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={checked}
+                  onChange={switchHandler}
+                  name="right/left"
                 />
-                <ImageListItemBar
-                  position="top"
-                  title={item.id.toUpperCase()}
-                />
-              </ImageListItem>
+              }
+              label={hand}
+            />
+          </FormGroup>
+          <h1>Filter on topics:</h1>
+
+          {buttons &&
+            buttons.map((type, index) => (
+              <>
+                <Button key={index} value={type.value} onClick={handleImage}>
+                  {type.name}
+                </Button>
+              </>
             ))}
-        </ImageList>
+
+          <ImageList gap={10} variant="string" cols={9}>
+            {filteredImages &&
+              filteredImages.map((item, index) => (
+                <ImageListItem key={item.id + index}>
+                  <img
+                    src={item.path}
+                    alt={item.id}
+                    style={{ transform: checkHand }}
+                  />
+                  <ImageListItemBar
+                    position="top"
+                    title={item.id.toUpperCase()}
+                  />
+                </ImageListItem>
+              ))}
+          </ImageList>
+        </div>
       </ThemeProvider>
     </main>
   );

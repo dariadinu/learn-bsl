@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ButtonAppBar } from "../components/Header";
 import {
   FormControlLabel,
   FormGroup,
@@ -12,6 +11,7 @@ import {
 import theme from "../utils/theme";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
+import "./familyQuiz.css";
 
 export const Alphabet = () => {
   const alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -60,33 +60,34 @@ export const Alphabet = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <ButtonAppBar />
-        <h1>Letters of the alphabet !</h1>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={checked}
-                onChange={switchHandler}
-                name="right/left"
-              />
-            }
-            label={hand}
-          />
-        </FormGroup>
-        <ImageList gap={10} variant="string" cols={9}>
-          {itemData.map((item, index) => (
-            <ImageListItem key={item.id + index}>
-              <img
-                src={item.url}
-                alt={"poza"}
-                loading="lazy"
-                style={{ transform: checkHand }}
-              />
-              <ImageListItemBar position="top" title={item.id} />
-            </ImageListItem>
-          ))}
-        </ImageList>
+        <div className="alphabet-container">
+          <h1>Letters of the alphabet !</h1>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={checked}
+                  onChange={switchHandler}
+                  name="right/left"
+                />
+              }
+              label={hand}
+            />
+          </FormGroup>
+          <ImageList gap={10} variant="string" cols={5}>
+            {itemData.map((item, index) => (
+              <ImageListItem key={item.id + index}>
+                <img
+                  src={item.url}
+                  alt={"poza"}
+                  loading="lazy"
+                  style={{ transform: checkHand, width: "200px" }}
+                />
+                <ImageListItemBar position="top" title={item.id} />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </div>
       </ThemeProvider>
     </main>
   );

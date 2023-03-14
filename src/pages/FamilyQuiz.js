@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { familyLessonQuizQuestions } from "../utils/imageData";
 import "./familyQuiz.css";
 import { Link, ThemeProvider } from "@mui/material";
-import { ButtonAppBar } from "../components/Header";
 import theme from "../utils/theme";
 
 export const FamilyQuiz = () => {
@@ -67,7 +66,6 @@ export const FamilyQuiz = () => {
 
   return (
     <main>
-      <ButtonAppBar />
       <div className="quiz-container">
         <ThemeProvider theme={theme} />
 

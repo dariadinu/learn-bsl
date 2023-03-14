@@ -1,5 +1,4 @@
 import React from "react";
-import { ButtonAppBar } from "../components/Header";
 import {
   Box,
   Button,
@@ -12,6 +11,7 @@ import {
 import theme from "../utils/theme";
 import Typography from "@mui/material/Typography";
 import { familyLessonSteps } from "../utils/imageData";
+import "./familyQuiz.css";
 
 export const FamilyLesson = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -24,59 +24,70 @@ export const FamilyLesson = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const handleRestart = () => {
+    setActiveStep(0);
+  };
+
   return (
     <main>
-      <ThemeProvider theme={theme}>
-        <ButtonAppBar />
-
-        <Stepper activeStep={activeStep}>
-          {familyLessonSteps.map((item, index) => {
-            return (
+      <div className="lesson-container">
+        <ThemeProvider theme={theme}>
+          <Stepper activeStep={activeStep}>
+            {familyLessonSteps.map((item, index) => (
               <Step key={index}>
                 <StepLabel {...item}>{item.label}</StepLabel>
               </Step>
-            );
-          })}
-        </Stepper>
-        <img
-          src={familyLessonSteps[activeStep].imagepath}
-          style={{ width: "20%" }}
-        ></img>
-        {activeStep === familyLessonSteps.length - 1 ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              {familyLessonSteps[activeStep].description}
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Link href={"/FamilyQuiz"}>
-                <Button>Quiz!</Button>{" "}
-              </Link>
-            </Box>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              {familyLessonSteps[activeStep].description}
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleNext}>
-                {activeStep === familyLessonSteps.length ? "Finish" : "Next"}
-              </Button>
-            </Box>
-          </React.Fragment>
-        )}
-        {/*</Box>*/}
-      </ThemeProvider>
+            ))}
+          </Stepper>
+          <img
+            src={familyLessonSteps[activeStep].imagepath}
+            style={{ width: "20%" }}
+          ></img>
+          {activeStep === familyLessonSteps.length - 1 ? (
+            <React.Fragment>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                {familyLessonSteps[activeStep].description}
+              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                <Button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: 1 }}
+                >
+                  Back
+                </Button>
+                <Box sx={{ flex: "1 1 auto" }} />
+                <Button onClick={handleRestart}> Restart Lesson</Button>
+                <Link href={"/FamilyQuiz"}>
+                  <Button color="secondary">Quiz!</Button>{" "}
+                </Link>
+              </Box>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                {familyLessonSteps[activeStep].description}
+              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                <Button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: 1 }}
+                >
+                  Back
+                </Button>
+                <Box sx={{ flex: "1 1 auto" }} />
+                <Button onClick={handleNext}>
+                  {activeStep === familyLessonSteps.length ? "Finish" : "Next"}
+                </Button>
+              </Box>
+            </React.Fragment>
+          )}
+          {/*</Box>*/}
+        </ThemeProvider>
+      </div>
     </main>
   );
 };
