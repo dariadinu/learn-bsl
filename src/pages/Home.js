@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, Paper, styled, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
 import "./familyQuiz.css";
+import myLogo from "../images/blackLogo.png";
+import SearchAppBar from "../components/SearchAppBar";
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -16,6 +18,7 @@ export const Home = () => {
     <main>
       <ThemeProvider theme={theme}>
         <div className="home-container">
+          <SearchAppBar />
           <Grid
             container
             spacing={1}
@@ -25,6 +28,16 @@ export const Home = () => {
             // justify="center"
             style={{ minHeight: "100vh" }}
           >
+            <Grid item xs={12}>
+              <Item>
+                <img
+                  src={myLogo}
+                  alt="Logo"
+                  className="logo"
+                  style={{ width: "400px" }}
+                />
+              </Item>
+            </Grid>
             <Grid item xs>
               <Item>
                 {" "}

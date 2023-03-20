@@ -10,11 +10,11 @@ import {
 } from "@mui/material";
 import theme from "../utils/theme";
 import Typography from "@mui/material/Typography";
-import { familyLessonSteps } from "../utils/imageData";
+import { greetingsLessonSteps } from "../utils/imageData";
 import "./familyQuiz.css";
 import SearchAppBar from "../components/SearchAppBar";
 
-export const FamilyLesson = () => {
+export const GreetingsLesson = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -36,24 +36,24 @@ export const FamilyLesson = () => {
         <ThemeProvider theme={theme}>
           <header>
             <Stepper activeStep={activeStep}>
-              {familyLessonSteps.map((item, index) => (
+              {greetingsLessonSteps.map((item, index) => (
                 <Step key={index}>
                   <StepLabel {...item}>{item.label}</StepLabel>
                 </Step>
               ))}
             </Stepper>
           </header>
-          <div className="image-container">
+          <div class="image-container">
             <img
-              src={familyLessonSteps[activeStep].imagepath}
+              src={greetingsLessonSteps[activeStep].imagepath}
               style={{ width: "250px" }}
             ></img>
           </div>
           <footer>
-            {activeStep === familyLessonSteps.length - 1 ? (
+            {activeStep === greetingsLessonSteps.length - 1 ? (
               <React.Fragment>
                 <Typography sx={{ mt: 2, mb: 1 }}>
-                  {familyLessonSteps[activeStep].description}
+                  {greetingsLessonSteps[activeStep].description}
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <Button
@@ -74,7 +74,7 @@ export const FamilyLesson = () => {
             ) : (
               <React.Fragment>
                 <Typography sx={{ mt: 2, mb: 1 }}>
-                  {familyLessonSteps[activeStep].description}
+                  {greetingsLessonSteps[activeStep].description}
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <Button
@@ -87,7 +87,7 @@ export const FamilyLesson = () => {
                   </Button>
                   <Box sx={{ flex: "1 1 auto" }} />
                   <Button onClick={handleNext}>
-                    {activeStep === familyLessonSteps.length
+                    {activeStep === greetingsLessonSteps.length
                       ? "Finish"
                       : "Next"}
                   </Button>

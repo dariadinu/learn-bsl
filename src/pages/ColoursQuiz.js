@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { familyLessonQuizQuestions } from "../utils/imageData";
+import { coloursLessonQuizQuestions } from "../utils/imageData";
 import "./familyQuiz.css";
 import { Link, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
 import SearchAppBar from "../components/SearchAppBar";
 
-export const FamilyQuiz = () => {
+export const ColoursQuiz = () => {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [result, setResult] = useState({
@@ -13,7 +13,7 @@ export const FamilyQuiz = () => {
     correctAnswers: 0,
     wrongAnswers: 0,
   });
-  const questions = familyLessonQuizQuestions.questions;
+  const questions = coloursLessonQuizQuestions.questions;
   const { question, choices, correctAnswer, imagePath, choicesImg } =
     questions[activeQuestion];
 

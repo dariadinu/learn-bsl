@@ -10,6 +10,10 @@ import { Alphabet } from "../pages/Alphabet";
 import { FamilyLesson } from "../pages/FamilyLesson";
 import * as PropTypes from "prop-types";
 import { FamilyQuiz } from "../pages/FamilyQuiz";
+import { ColoursLesson } from "../pages/ColoursLesson";
+import { ColoursQuiz } from "../pages/ColoursQuiz";
+import { GreetingsLesson } from "../pages/GreetingsLesson";
+import { GreetingsQuiz } from "../pages/GreetingsQuiz";
 
 function QuizPage(props) {
   return null;
@@ -29,7 +33,11 @@ export const Routing = () => {
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Alphabet" element={<Alphabet />} />
         <Route path="/FamilyLesson" element={<FamilyLesson />} />
+        <Route path="/ColoursLesson" element={<ColoursLesson />} />
+        <Route path="/GreetingsLesson" element={<GreetingsLesson />} />
+        <Route path="/GreetingsQuiz" element={<GreetingsQuiz />} />
         <Route path="/FamilyQuiz" element={<FamilyQuiz />} />
+        <Route path="/ColoursQuiz" element={<ColoursQuiz />} />
       </Routes>
     </BrowserRouter>
   );

@@ -12,6 +12,7 @@ import theme from "../utils/theme";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import "./familyQuiz.css";
+import SearchAppBar from "../components/SearchAppBar";
 
 export const Alphabet = () => {
   const alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -61,6 +62,7 @@ export const Alphabet = () => {
     <main>
       <ThemeProvider theme={theme}>
         <div className="alphabet-container">
+          <SearchAppBar />
           <h1>Letters of the alphabet !</h1>
           <FormGroup>
             <FormControlLabel

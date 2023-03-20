@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import "./card.scss";
-import myLogo from "../images/Learn.png";
+import myLogo from "../images/blackLogo.png";
 
 const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
   const handleClick = () => {

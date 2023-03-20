@@ -2,22 +2,24 @@
 
 body {
     font-family: 'Anek Malayalam', sans-serif;
-    background: lightblue;
+    background: #DCE7F8;
     color: #11052c;
     display: flex;
     justify-content: center;
-    margin: 0;
+    margin: 5px;
     padding: 0 30px;
+    /*box-shadow: 0 0 4px 4px #DEDEDE;*/
 }
 
 main {
     font-family: 'Anek Malayalam', sans-serif;
-    background: lightblue;
+    background: #DCE7F8;
     color: #11052c;
     display: flex;
     justify-content: center;
-    margin: 0;
+
     padding: 0 30px;
+    /*box-shadow: 0 0 4px 4px #DEDEDE;*/
 }
 .quiz-container {
     max-width: 500px;
@@ -25,31 +27,74 @@ main {
     background: #ffffff;
     border-radius: 4px;
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
+    box-shadow: 0 0 4px 4px #DEDEDE;
 
 }
 
 .lesson-container {
-    max-width: 700px;
-    min-width: 250px;
-    height: 300px;
+    /*max-width: 700px;*/
+    /*min-width: 250px;*/
+    width: 900px;
+    height: 600px;
     background: #ffffff;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
     justify-content: center;
+    box-shadow: 0 0 4px 4px #DEDEDE; }
 
+.lesson-container .header {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+
+    }
+
+.lesson-container .footer {
+        width: 360px;
+        position: relative;
+        margin: 0 auto;
+        padding: 10px 4px;
+        margin-top: 10px;
+    }
+
+.image-container {
+    border: 1px solid #DEDEDE;
+    padding: 12px;
+    box-shadow: 0 0 4px 4px #DEDEDE;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: stretch;
+    gap: 1rem;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    perspective: 100%;
+    max-width: 720px;
 }
 
 .game-container {
-    max-width: 700px;
-    min-width: 250px;
-    height: 400px;
+    /*max-width: 700px;*/
+    /*min-width: 250px;*/
+    /*height: 600px;*/
+    min-height: 550px;
+    width: 500px;
     background: #ffffff;
     border-radius: 4px;
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
     justify-content: center;
+    border: 1px solid #DEDEDE;
+    /*padding: 12px;*/
+    box-shadow: 0 0 4px 4px #DEDEDE;
+
+
+
+
 
 }
 
@@ -60,8 +105,9 @@ main {
     background: #ffffff;
     border-radius: 4px;
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
     justify-content: center;
+    box-shadow: 0 0 4px 4px #DEDEDE;
 
 }
 
@@ -72,8 +118,9 @@ main {
     background: #ffffff;
     border-radius: 4px;
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
     justify-content: center;
+    box-shadow: 0 0 4px 4px #DEDEDE;
 
 }
 
@@ -84,8 +131,9 @@ main {
     background: #ffffff;
     border-radius: 4px;
     /*margin-top: 100px;*/
-    padding: 30px 60px;
+    padding: 0px 60px;
     justify-content: center;
+    /*box-shadow: 0 0 4px 4px #DEDEDE;*/
 
 }
 

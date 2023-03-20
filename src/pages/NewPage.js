@@ -14,6 +14,7 @@ import { db } from "../utils/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import theme from "../utils/theme";
 import "./familyQuiz.css";
+import SearchAppBar from "../components/SearchAppBar";
 
 export const NewPage = () => {
   const [guessedWord, setGuessedWord] = useState("");
@@ -143,6 +144,7 @@ export const NewPage = () => {
     <main>
       <ThemeProvider theme={theme}>
         <div className="game-container">
+          <SearchAppBar />
           <h1>Guess the word!</h1>
           <FormGroup>
             <FormControlLabel
@@ -162,13 +164,14 @@ export const NewPage = () => {
             // rowHeight={164}
             variant="string"
             cols={word.length}
+            // gap={10}
           >
             {itemData.map((item, index) => (
               <ImageListItem key={item.id + index}>
                 <img
                   src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
                   alt={item.id}
-                  style={{ transform: checkHand }}
+                  style={{ transform: checkHand, width: "100%" }}
                 />
               </ImageListItem>
             ))}

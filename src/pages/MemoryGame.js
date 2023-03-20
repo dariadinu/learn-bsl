@@ -13,6 +13,7 @@ import Card from "./Card";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import theme from "../utils/theme";
+import SearchAppBar from "../components/SearchAppBar";
 
 function shuffleCards(array) {
   if (!array || array.length === 0) return [];
@@ -166,6 +167,7 @@ export const MemoryGame = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <SearchAppBar />
       <div className="App">
         <header>
           <h1>Memory Game!</h1>

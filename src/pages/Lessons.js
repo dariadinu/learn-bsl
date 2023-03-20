@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Paper, styled, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
+import SearchAppBar from "../components/SearchAppBar";
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -15,6 +16,7 @@ export const Lessons = () => {
     <main>
       <ThemeProvider theme={theme}>
         <div className="home-container">
+          <SearchAppBar />
           <Grid
             container
             spacing={1}
@@ -25,11 +27,17 @@ export const Lessons = () => {
             style={{ minHeight: "100vh" }}
           >
             <Grid item xs>
-              <Item>Greetings</Item>
+              <Item>
+                {" "}
+                <a href={"/GreetingsLesson"}>Greetings</a>
+              </Item>
             </Grid>
 
             <Grid item xs>
-              <Item>Colours</Item>
+              <Item>
+                {" "}
+                <a href={"/ColoursLesson"}> Colours </a>
+              </Item>
             </Grid>
 
             <Grid item xs>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Paper, styled, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
+import SearchAppBar from "../components/SearchAppBar";
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -15,6 +16,7 @@ export const Games = () => {
     <main>
       <ThemeProvider theme={theme}>
         <div className="home-container">
+          <SearchAppBar />
           <Grid
             container
             spacing={1}
