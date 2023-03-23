@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Link,
+  Stack,
   Step,
   StepLabel,
   Stepper,
@@ -31,10 +32,11 @@ export const GreetingsLesson = () => {
 
   return (
     <main>
-      <div className="lesson-container">
-        <SearchAppBar />
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Stack direction="column" spacing={2}>
           <header>
+            <SearchAppBar />
+            <br></br>
             <Stepper activeStep={activeStep}>
               {greetingsLessonSteps.map((item, index) => (
                 <Step key={index}>
@@ -43,61 +45,72 @@ export const GreetingsLesson = () => {
               ))}
             </Stepper>
           </header>
-          <div class="image-container">
-            <img
-              src={greetingsLessonSteps[activeStep].imagepath}
-              style={{ width: "250px" }}
-            ></img>
+          <div className="lesson-container">
+            <br></br>
+
+            <Stack direction={"row"} spacing={16}>
+              <div className={"image-container"}>
+                {" "}
+                <h1>{greetingsLessonSteps[activeStep].label}</h1>
+                <img
+                  src={greetingsLessonSteps[activeStep].imagepath}
+                  style={{ width: "250px" }}
+                ></img>
+              </div>
+            </Stack>
+
+            <br></br>
+            <footer>
+              {activeStep === greetingsLessonSteps.length - 1 ? (
+                <React.Fragment>
+                  <Typography sx={{ mt: 2, mb: 1 }}>
+                    {greetingsLessonSteps[activeStep].description}
+                  </Typography>
+                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                    <Button
+                      color="inherit"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    <Button onClick={handleRestart}> Restart Lesson</Button>
+                    <Link href={"/GreetingsQuiz"} underline="none">
+                      <Button color="secondary" variant="contained">
+                        Quiz!
+                      </Button>{" "}
+                    </Link>
+                  </Box>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <Typography sx={{ mt: 2, mb: 1 }}>
+                    {greetingsLessonSteps[activeStep].description}
+                  </Typography>
+                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                    <Button
+                      color="inherit"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    <Button onClick={handleNext}>
+                      {activeStep === greetingsLessonSteps.length
+                        ? "Finish"
+                        : "Next"}
+                    </Button>
+                  </Box>
+                </React.Fragment>
+              )}
+            </footer>
           </div>
-          <footer>
-            {activeStep === greetingsLessonSteps.length - 1 ? (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  {greetingsLessonSteps[activeStep].description}
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleRestart}> Restart Lesson</Button>
-                  <Link href={"/GreetingsQuiz"}>
-                    <Button color="secondary">Quiz!</Button>{" "}
-                  </Link>
-                </Box>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  {greetingsLessonSteps[activeStep].description}
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleNext}>
-                    {activeStep === greetingsLessonSteps.length
-                      ? "Finish"
-                      : "Next"}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </footer>
-          {/*</Box>*/}
-        </ThemeProvider>
-      </div>
+        </Stack>
+      </ThemeProvider>
     </main>
   );
 };

@@ -12,7 +12,7 @@ const SearchBar = ({ keyword, onChange }) => {
       key="search-bar"
       value={keyword}
       placeholder={"Search sign..."}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={onChange}
     />
   );
 };

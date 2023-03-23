@@ -395,6 +395,7 @@ export const familyLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: require("../images/family/mum.png"),
+      correctIndex: 3,
       // imagePath: require("../images/family/daughter.png"),
     },
     {
@@ -403,6 +404,7 @@ export const familyLessonQuizQuestions = {
       type: "MCQs",
       correctAnswer: "daughter",
       imagePath: require("../images/family/daughter.png"),
+      correctIndex: 2,
     },
     {
       question: "What is this image sign for?",
@@ -410,6 +412,7 @@ export const familyLessonQuizQuestions = {
       type: "MCQs",
       correctAnswer: "sister",
       imagePath: require("../images/family/sister.png"),
+      correctIndex: 2,
     },
     {
       question: "What is the sign for 'Brother'?",
@@ -424,6 +427,7 @@ export const familyLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: require("../images/family/brother.png"),
+      correctIndex: 0,
       // imagePath: require("../images/family/daughter.png"),
     },
   ],
@@ -449,18 +453,20 @@ export const coloursLessonSteps = [
   },
   {
     label: "Orange",
-    description: "Primary hand makes ",
+    description:
+      "Clawed primary hand held by side of mouth. Partly open and close hand a few times (squeezing orange).",
     imagepath: require("../images/colours/orange.png"),
   },
   {
     label: "Pink",
-    description: "Primary hand index finger brushes along cheek.",
+    description: "Tip of primary index finger brushes down cheek.",
     imagepath: require("../images/colours/pink.png"),
   },
 
   {
     label: "White",
-    description: " Primary hand brushed on chest up and down.",
+    description:
+      "Tips of thumb and index finger held together to form 'O' shape. Make small brushing movement near shoulder.",
     imagepath: require("../images/colours/white.png"),
   },
   {
@@ -490,12 +496,14 @@ export const coloursLessonQuizQuestions = {
       type: "MCQs",
       correctAnswer: require("../images/colours/pink.png"),
       // imagePath: require("../images/family/daughter.png"),
+      correctIndex: 0,
     },
     {
       question: "What is this image sign for?",
       choices: ["green", "blue", "yellow", "orange"],
       type: "MCQs",
       correctAnswer: "green",
+      correctIndex: 0,
       imagePath: require("../images/colours/green.png"),
     },
     {
@@ -503,6 +511,7 @@ export const coloursLessonQuizQuestions = {
       choices: ["black", "white", "pink", "none of the above"],
       type: "MCQs",
       correctAnswer: "white",
+      correctIndex: 1,
       imagePath: require("../images/colours/white.png"),
     },
     {
@@ -518,6 +527,7 @@ export const coloursLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: require("../images/colours/orange.png"),
+      correctIndex: 1,
       // imagePath: require("../images/family/daughter.png"),
     },
   ],
@@ -526,8 +536,7 @@ export const coloursLessonQuizQuestions = {
 export const greetingsLessonSteps = [
   {
     label: "Hello",
-    description:
-      "Waving of primary hand in front of face, with palm facing away from body.",
+    description: "Wave hand near side of head.",
     imagepath: require("../images/greetings/hello.png"),
   },
   {
@@ -542,38 +551,42 @@ export const greetingsLessonSteps = [
   // },
   {
     label: "Good",
-    description: "Thumbs up ",
+    description:
+      " Make short forward movement using closed hand with thumb up (1 or 2 hands)",
     imagepath: require("../images/greetings/good.png"),
   },
   {
     label: "Thank you!",
-    description: "Primary hand - same as please",
+    description:
+      " Flat hand starts with fingertips on chin. Hand moves down and away from signer.",
     imagepath: require("../images/greetings/thanks.png"),
   },
 
   {
     label: "Nice",
-    description: "Thumb goes along mouth",
+    description: " Tip of extended thumb brushes along chin once.",
     imagepath: require("../images/greetings/nice.png"),
   },
   {
     label: "Meet",
-    description: "Index fingers of both hands touch",
+    description:
+      "Extended index fingers held upright in front of body move toward each other.",
     imagepath: require("../images/greetings/meet.png"),
   },
   {
     label: "You",
-    description: "Pointing with index finger",
+    description: " Point with index finger at the person being referred to.",
     imagepath: require("../images/greetings/you.png"),
   },
   {
     label: "Me",
-    description: "Pointing at yourself ",
+    description: "Index finger points at signer.",
     imagepath: require("../images/greetings/me.png"),
   },
   {
     label: "Name",
-    description: "Index and middle finger hop from forehead",
+    description:
+      "Tips of index and middle fingers touch forehead . Hand twists forwards at wrist until fingers are facing forwards in front of face.",
     imagepath: require("../images/greetings/name.png"),
   },
   // {
@@ -583,17 +596,19 @@ export const greetingsLessonSteps = [
   // },
   {
     label: "Afternoon",
-    description: "Both index and middle finger from chin to front of face",
+    description:
+      "Tips of index & middle finger (’N’ shape) touch chin then wrist twists so finger tips are facing forwards.",
     imagepath: require("../images/greetings/afternoon.png"),
   },
   {
     label: "Night",
-    description: "Both hands in front of face in downward motion",
+    description:
+      "Open hands with palms facing inwards move down in front of body to finish horizontal.",
     imagepath: require("../images/greetings/night.png"),
   },
   {
     label: "Sorry",
-    description: "Hand rubbing stomach in circular motion",
+    description: "Closed hand makes a circular motion on chest.",
     imagepath: require("../images/greetings/sorry.png"),
   },
 ];
@@ -617,6 +632,7 @@ export const greetingsLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: require("../images/greetings/thanks.png"),
+      correctIndex: 0,
       // imagePath: require("../images/family/daughter.png"),
     },
     {
@@ -625,6 +641,7 @@ export const greetingsLessonQuizQuestions = {
       type: "MCQs",
       correctAnswer: "sorry",
       imagePath: require("../images/greetings/sorry.png"),
+      correctIndex: 2,
     },
     {
       question: "What is this image sign for?",
@@ -636,6 +653,7 @@ export const greetingsLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: "how are you",
+      correctIndex: 2,
       imagePath: require("../images/greetings/howareyou.png"),
     },
     {
@@ -651,6 +669,7 @@ export const greetingsLessonQuizQuestions = {
       ],
       type: "MCQs",
       correctAnswer: require("../images/greetings/afternoon.png"),
+      correctIndex: 0,
       // imagePath: require("../images/family/daughter.png"),
     },
   ],

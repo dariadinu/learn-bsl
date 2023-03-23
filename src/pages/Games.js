@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper, styled, ThemeProvider } from "@mui/material";
+import { Grid, Link, Paper, Stack, styled, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
 import SearchAppBar from "../components/SearchAppBar";
 
@@ -15,37 +15,46 @@ export const Games = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <div className="home-container">
+        <Stack spacing={2} direction="column">
           <SearchAppBar />
-          <Grid
-            container
-            spacing={1}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            justify="center"
-            style={{ minHeight: "100vh" }}
-          >
-            <Grid item xs>
-              <Item>
-                {" "}
-                <a href={"/game1"}> Fingerspelling Challenge </a>{" "}
-              </Item>
-            </Grid>
+          <div className="home-container">
+            <Grid
+              container
+              spacing={1}
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              justify="center"
+              style={{ minHeight: "70vh" }}
+            >
+              <Grid item xs>
+                <Item elevation={24}>
+                  {" "}
+                  <Link underline="none" href={"/game1"}>
+                    {" "}
+                    Fingerspelling Challenge{" "}
+                  </Link>{" "}
+                </Item>
+              </Grid>
 
-            <Grid item xs>
-              <Item>
-                <a href={"/new-game"}>Guess the words</a>
-              </Item>
-            </Grid>
+              <Grid item xs>
+                <Item elevation={24}>
+                  <Link underline="none" href={"/new-game"}>
+                    Guess the words
+                  </Link>
+                </Item>
+              </Grid>
 
-            <Grid item xs>
-              <Item>
-                <a href={"/MemoryGame"}>Memory Game</a>
-              </Item>
+              <Grid item xs>
+                <Item elevation={24}>
+                  <Link underline="none" href={"/MemoryGame"}>
+                    Memory Game
+                  </Link>
+                </Item>
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
+          </div>
+        </Stack>
       </ThemeProvider>
     </main>
   );

@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Link,
+  Stack,
   Step,
   StepLabel,
   Stepper,
@@ -31,10 +32,11 @@ export const ColoursLesson = () => {
 
   return (
     <main>
-      <div className="lesson-container">
-        <SearchAppBar />
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Stack direction="column" spacing={2}>
           <header>
+            <SearchAppBar />
+            <br></br>
             <Stepper activeStep={activeStep}>
               {coloursLessonSteps.map((item, index) => (
                 <Step key={index}>
@@ -43,61 +45,67 @@ export const ColoursLesson = () => {
               ))}
             </Stepper>
           </header>
-          <div className="image-container">
-            <img
-              src={coloursLessonSteps[activeStep].imagepath}
-              style={{ width: "250px" }}
-            ></img>
+          <div className="lesson-container">
+            <br></br>
+            <div className="image-container">
+              <img
+                src={coloursLessonSteps[activeStep].imagepath}
+                style={{ width: "250px" }}
+              ></img>
+            </div>
+            <br></br>
+            <footer>
+              {activeStep === coloursLessonSteps.length - 1 ? (
+                <React.Fragment>
+                  <Typography sx={{ mt: 2, mb: 1 }}>
+                    {coloursLessonSteps[activeStep].description}
+                  </Typography>
+                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                    <Button
+                      color="inherit"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    <Button onClick={handleRestart}> Restart Lesson</Button>
+                    <Link href={"/ColoursQuiz"} underline="none">
+                      <Button color="secondary" variant="contained">
+                        Quiz!
+                      </Button>{" "}
+                    </Link>
+                  </Box>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <Typography sx={{ mt: 2, mb: 1 }}>
+                    {coloursLessonSteps[activeStep].description}
+                  </Typography>
+                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                    <Button
+                      color="inherit"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    <Button onClick={handleNext}>
+                      {activeStep === coloursLessonSteps.length
+                        ? "Finish"
+                        : "Next"}
+                    </Button>
+                  </Box>
+                </React.Fragment>
+              )}
+            </footer>
+            {/*</Box>*/}
           </div>
-          <footer>
-            {activeStep === coloursLessonSteps.length - 1 ? (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  {coloursLessonSteps[activeStep].description}
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleRestart}> Restart Lesson</Button>
-                  <Link href={"/GreetingsQuiz"}>
-                    <Button color="secondary">Quiz!</Button>{" "}
-                  </Link>
-                </Box>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  {coloursLessonSteps[activeStep].description}
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleNext}>
-                    {activeStep === coloursLessonSteps.length
-                      ? "Finish"
-                      : "Next"}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </footer>
-          {/*</Box>*/}
-        </ThemeProvider>
-      </div>
+        </Stack>
+      </ThemeProvider>
     </main>
   );
 };

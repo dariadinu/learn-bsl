@@ -5,6 +5,7 @@ import {
   FormGroup,
   ImageList,
   ImageListItem,
+  Stack,
   Switch,
   TextField,
   ThemeProvider,
@@ -23,7 +24,6 @@ export const NewPage = () => {
     "tank",
     "bank",
     "chad",
-    "tiger",
     "Bake",
     "Word",
     "List",
@@ -122,6 +122,7 @@ export const NewPage = () => {
         theme: "light",
       });
       setWord(chooseRandomWord);
+      setCount(count + 1);
     } else {
       toast.error("Try again!", {
         position: "top-center",
@@ -140,64 +141,79 @@ export const NewPage = () => {
     populateItemData();
   }, []);
 
+  let [count, setCount] = useState(0);
+
+  const refreshGame = () => {
+    setCount(0);
+  };
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <div className="game-container">
+        <Stack direction="column" spacing={2}>
           <SearchAppBar />
-          <h1>Guess the word!</h1>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={checked}
-                  onChange={switchHandler}
-                  name="right/left"
+          <div className="game-container">
+            <h1>Guess the word!</h1>
+            <Stack direction={"row"} spacing={9}>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={checked}
+                      onChange={switchHandler}
+                      name="right/left"
+                    />
+                  }
+                  label={hand}
                 />
-              }
-              label={hand}
-            />
-          </FormGroup>
-          {/*  deci arata bine cu 500 si 100 */}
-          <ImageList
-            sx={{ width: 500, height: 100 }}
-            // rowHeight={164}
-            variant="string"
-            cols={word.length}
-            // gap={10}
-          >
-            {itemData.map((item, index) => (
-              <ImageListItem key={item.id + index}>
-                <img
-                  src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
-                  alt={item.id}
-                  style={{ transform: checkHand, width: "100%" }}
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
-          <h3>Enter your guess here:</h3>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              label="Enter your guess here"
-              value={guessedWord}
-              onChange={(event) => {
-                setGuessedWord(event.target.value);
-              }}
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              onClick={validateInput}
-              onKeyDown={validateInput}
+              </FormGroup>
+              <h3>Correct guesses: {count}</h3>
+            </Stack>
+            {/*  deci arata bine cu 500 si 100 */}
+            <ImageList
+              sx={{ width: 500, height: 100 }}
+              // rowHeight={164}
+              variant="string"
+              cols={word.length}
+              // gap={10}
             >
-              Verify guess
-            </Button>
-            <ToastContainer />
-          </form>
-        </div>
+              {itemData.map((item, index) => (
+                <ImageListItem key={item.id + index}>
+                  <img
+                    src={`${item.url}?w=164&h=164&fit=crop&auto=format`}
+                    alt={item.id}
+                    style={{ transform: checkHand, width: "100%" }}
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+            <h3>Enter your guess here:</h3>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                label="Enter your guess here"
+                value={guessedWord}
+                onChange={(event) => {
+                  setGuessedWord(event.target.value);
+                }}
+              />
+              <br />
+              <br />
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={validateInput}
+                onKeyDown={validateInput}
+              >
+                Verify guess
+              </Button>
+              <Button variant="outlined" onClick={refreshGame}>
+                New game
+              </Button>
+              <ToastContainer />
+            </form>
+          </div>
+        </Stack>
       </ThemeProvider>
     </main>
   );

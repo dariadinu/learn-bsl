@@ -6,6 +6,7 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Stack,
   Switch,
   ThemeProvider,
 } from "@mui/material";
@@ -19,9 +20,10 @@ import SearchBar from "../components/SearchBar";
 
 export const Dictionary = () => {
   const [filteredImages, setFilteredImaged] = useState(null);
+  const allImages = getAllImages();
 
   useEffect(() => {
-    setFilteredImaged(getAllImages());
+    setFilteredImaged(allImages);
   }, []);
 
   function handleImage(e) {
@@ -57,105 +59,79 @@ export const Dictionary = () => {
 
   // const [itemData, setItemData] = useState("");
 
-  const updateKeyword = (keyword) => {
-    console.log(keyword);
-    setKeyword(keyword);
-    const filtered = filteredImages.filter((image) => {
-      return `${image.id.toLowerCase()}`.startsWith(keyword.toLowerCase());
+  const updateKeyword = (e) => {
+    // console.log();
+    const input = e.target.value;
+    setKeyword(input);
+    const filtered = allImages.filter((image) => {
+      return `${image.id.toLowerCase()}`.startsWith(input.toLowerCase());
     });
 
-    if (keyword === "") {
+    if (input === "") {
       setFilteredImaged(getAllImages());
     } else {
       setFilteredImaged(filtered);
     }
-
-    // console.log(filtered);
-    // if (!filteredImages.includes(keyword)) {
-    //   console.log("entered if");
-    //   const temp = "Word not in dictionary.";
-    //   setItemData(temp);
-    //   console.log(temp);
-    // }
   };
-
-  // const handleSearch = async (event, keyword) => {
-  //   console.log("searching");
-  //   console.log(keyword);
-  //   console.log("handleSubmit ran");
-  //   event.preventDefault();
-  //   setKeyword(keyword);
-  //   const filtered = filteredImages.filter((image) => {
-  //     return `${image.id.toLowerCase()}`.startsWith(keyword.toLowerCase());
-  //   });
-  //   console.log(filtered);
-  //   if (filtered === []) {
-  //     const temp = [];
-  //     for (let i = 0; i < keyword.length; i++) {
-  //       const dataForLetter = await getDataForLetterFromDB(
-  //         keyword[i].toUpperCase()
-  //       );
-  //       temp.push({
-  //         id: keyword[i],
-  //         url: dataForLetter.url,
-  //       });
-  //     }
-  //     setFilteredImaged(temp);
-  //   }
-  // };
 
   return (
     <>
       <main>
         <ThemeProvider theme={theme}>
-          <div className="dictionary-container">
+          <Stack direction="column" spacing={2}>
             <SearchAppBar />
-            <div style={{ width: "30%" }}>
-              <h1>Filter on topics:</h1>
-            </div>
+            <div className="dictionary-container">
+              <div style={{ width: "30%" }}>
+                <h1>Filter on topics:</h1>
+              </div>
 
-            <SearchBar keyword={keyword} onChange={updateKeyword} />
-            <div style={{ width: "70%" }}>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={checked}
-                      onChange={switchHandler}
-                      name="right/left"
-                    />
-                  }
-                  label={hand}
-                />
-              </FormGroup>
-            </div>
-            {buttons &&
-              buttons.map((type, index) => (
-                <>
-                  <Button key={index} value={type.value} onClick={handleImage}>
-                    {type.name}
-                  </Button>
-                </>
-              ))}
-
-            <ImageList gap={20} variant="string" cols={4}>
-              {filteredImages &&
-                filteredImages.map((item, index) => (
-                  <ImageListItem key={item.id + index}>
-                    <img
-                      src={item.path}
-                      alt={item.id}
-                      style={{ transform: checkHand, width: "200px" }}
-                    />
-
-                    <ImageListItemBar
-                      position="top"
-                      title={item.id.toUpperCase()}
-                    />
-                  </ImageListItem>
+              <SearchBar keyword={keyword} onChange={updateKeyword} />
+              <div style={{ width: "70%" }}>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={checked}
+                        onChange={switchHandler}
+                        name="right/left"
+                      />
+                    }
+                    label={hand}
+                  />
+                </FormGroup>
+              </div>
+              {buttons &&
+                buttons.map((type, index) => (
+                  <>
+                    <Button
+                      key={index}
+                      value={type.value}
+                      onClick={handleImage}
+                    >
+                      {type.name}
+                    </Button>
+                  </>
                 ))}
-            </ImageList>
-          </div>
+
+              <ImageList gap={20} variant="string" cols={4}>
+                {filteredImages &&
+                  filteredImages.map((item, index) => (
+                    <ImageListItem key={item.id + index}>
+                      <img
+                        src={item.path}
+                        alt={item.id}
+                        style={{ transform: checkHand, width: "200px" }}
+                      />
+
+                      <ImageListItemBar
+                        position="top"
+                        title={item.id.toUpperCase()}
+                      />
+                    </ImageListItem>
+                  ))}
+              </ImageList>
+            </div>
+          </Stack>
         </ThemeProvider>
       </main>
     </>

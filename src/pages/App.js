@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import {
-  Box,
   Button,
+  ButtonGroup,
   FormControlLabel,
   FormGroup,
+  Stack,
   Switch,
   TextField,
   ThemeProvider,
@@ -96,61 +97,67 @@ const App = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <div className="game-container">
+        <Stack direction={"column"} spacing={2}>
           <SearchAppBar />
-          <h1>Guess the letter!</h1>
-          <h3>
-            Correct guesses: {count}
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={checked}
-                    onChange={switchHandler}
-                    name="right/left"
-                  />
-                }
-                label={hand}
-              />
-            </FormGroup>
-          </h3>
+          <div className="game-container">
+            <h1>Guess the letter!</h1>
+            <Stack direction={"row"} spacing={9}>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={checked}
+                      onChange={switchHandler}
+                      name="right/left"
+                    />
+                  }
+                  label={hand}
+                />
+              </FormGroup>
+              <h3>Correct guesses: {count}</h3>
+            </Stack>
 
-          {/*<Stack>*/}
-          {data && (
-            <img
-              style={{ width: "45%", transform: checkHand }}
-              src={data.url}
-              alt={"hand sign"}
-            ></img>
-          )}
-          <Box>
-            <h3>Enter your guess here:</h3>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                label="Enter your guess here"
-                value={guess}
-                onChange={(event) => {
-                  setGuess(event.target.value);
-                }}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                onClick={validateInput}
-                onKeyDown={validateInput}
-              >
-                Verify guess
-              </Button>
-              <Button variant="outlined" onClick={refreshGame}>
-                New game
-              </Button>
-              <ToastContainer />
-            </form>
-          </Box>
-          {/*</Stack>*/}
-        </div>
+            {data && (
+              <img
+                style={{ width: "80%", transform: checkHand }}
+                src={data.url}
+                alt={"hand sign"}
+              ></img>
+            )}
+
+            <Stack direction="column" spacing="2">
+              <h3>Enter your guess here:</h3>
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  id="outlined-basic"
+                  variant="outlined"
+                  label="Enter your guess here"
+                  value={guess}
+                  onChange={(event) => {
+                    setGuess(event.target.value);
+                  }}
+                />
+                <br /> <br />
+                <ButtonGroup>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={validateInput}
+                    onKeyDown={validateInput}
+                  >
+                    Verify guess
+                  </Button>
+                  <br></br>
+                  <Button variant="outlined" onClick={refreshGame}>
+                    New game
+                  </Button>
+                </ButtonGroup>
+                <ToastContainer />
+              </form>
+            </Stack>
+            {/*</Stack>*/}
+          </div>
+        </Stack>
       </ThemeProvider>
     </main>
   );
