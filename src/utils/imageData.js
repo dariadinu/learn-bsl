@@ -538,78 +538,94 @@ export const greetingsLessonSteps = [
     label: "Hello",
     description: "Wave hand near side of head.",
     imagepath: require("../images/greetings/hello.png"),
+    // style: { width: "10px" },
   },
   {
     label: "Bye",
     description: `Same as hello - Waving of primary hand in front of face, with palm facing away from body. `,
     imagepath: require("../images/greetings/bye.png"),
+    // style: { width: "250px" },
   },
-  // {
-  //   label: "How are you ?",
-  //   description: "Brushing both hands up along chest and then thumbs up",
-  //   imagepath: require("../images/greetings/howareyou.png"),
-  // },
+  {
+    label: "How are you ?",
+    description: "Brushing both hands up along chest and then thumbs up",
+    imagepath: require("../images/greetings/phrase2.png"),
+    // style: { width: "10px" },
+    phrase: "Phrase 2",
+  },
   {
     label: "Good",
     description:
       " Make short forward movement using closed hand with thumb up (1 or 2 hands)",
     imagepath: require("../images/greetings/good.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Thank you!",
     description:
       " Flat hand starts with fingertips on chin. Hand moves down and away from signer.",
     imagepath: require("../images/greetings/thanks.png"),
+    // style: { width: "250px" },
   },
 
   {
     label: "Nice",
     description: " Tip of extended thumb brushes along chin once.",
     imagepath: require("../images/greetings/nice.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Meet",
     description:
       "Extended index fingers held upright in front of body move toward each other.",
     imagepath: require("../images/greetings/meet.png"),
+    // style: { width: "250px" },
   },
   {
     label: "You",
     description: " Point with index finger at the person being referred to.",
     imagepath: require("../images/greetings/you.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Me",
     description: "Index finger points at signer.",
     imagepath: require("../images/greetings/me.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Name",
     description:
       "Tips of index and middle fingers touch forehead . Hand twists forwards at wrist until fingers are facing forwards in front of face.",
     imagepath: require("../images/greetings/name.png"),
+    // style: { width: "250px" },
   },
-  // {
-  //   label: "What's your name ?",
-  //   description: "Translates to name - you - what ?",
-  //   imagepath: require("../images/greetings/name-you-what.png"),
-  // },
+  {
+    label: "What's your name ?",
+    description: "Translates to name - you - what ?",
+    imagepath: require("../images/greetings/phrase1.png"),
+    // style: { width: "300px", heigth: "300px" },
+    phrase: "Phrase 2",
+  },
   {
     label: "Afternoon",
     description:
       "Tips of index & middle finger (’N’ shape) touch chin then wrist twists so finger tips are facing forwards.",
     imagepath: require("../images/greetings/afternoon.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Night",
     description:
       "Open hands with palms facing inwards move down in front of body to finish horizontal.",
     imagepath: require("../images/greetings/night.png"),
+    // style: { width: "250px" },
   },
   {
     label: "Sorry",
     description: "Closed hand makes a circular motion on chest.",
     imagepath: require("../images/greetings/sorry.png"),
+    // style: { width: "250px" },
   },
 ];
 

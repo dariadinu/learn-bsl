@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  Container,
   FormControlLabel,
   FormGroup,
+  Grid,
   ImageList,
   ImageListItem,
   ImageListItemBar,
@@ -13,10 +15,9 @@ import {
 import theme from "../utils/theme";
 import { filterImages, getAllImages } from "../utils/services";
 import { buttons } from "../utils/imageData";
-// import { greetingHi } from ;
+
 import SearchAppBar from "../components/SearchAppBar";
 import SearchBar from "../components/SearchBar";
-// import { Search } from "@mui/icons-material";
 
 export const Dictionary = () => {
   const [filteredImages, setFilteredImaged] = useState(null);
@@ -50,14 +51,6 @@ export const Dictionary = () => {
   };
 
   const [keyword, setKeyword] = useState("");
-  // const getDataForLetterFromDB = async (letter) => {
-  //   const docRef = doc(db, "right-signs-alphabet", "letter" + letter);
-  //   const myDoc = await getDoc(docRef);
-  //   // console.log(myDoc.data());
-  //   return myDoc.data();
-  // };
-
-  // const [itemData, setItemData] = useState("");
 
   const updateKeyword = (e) => {
     // console.log();
@@ -84,22 +77,35 @@ export const Dictionary = () => {
               <div style={{ width: "30%" }}>
                 <h1>Filter on topics:</h1>
               </div>
-
-              <SearchBar keyword={keyword} onChange={updateKeyword} />
-              <div style={{ width: "70%" }}>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={checked}
-                        onChange={switchHandler}
-                        name="right/left"
+              <Grid
+                container
+                spacing={1}
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                justify="center"
+                // style={{ minHeight: "70vh" }}
+              >
+                <Grid item xs={6}>
+                  <SearchBar keyword={keyword} onChange={updateKeyword} />
+                </Grid>
+                <Grid item xs={6}>
+                  <div style={{ width: "70%" }}>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Switch
+                            checked={checked}
+                            onChange={switchHandler}
+                            name="right/left"
+                          />
+                        }
+                        label={hand}
                       />
-                    }
-                    label={hand}
-                  />
-                </FormGroup>
-              </div>
+                    </FormGroup>
+                  </div>
+                </Grid>
+              </Grid>
               {buttons &&
                 buttons.map((type, index) => (
                   <>
@@ -130,6 +136,15 @@ export const Dictionary = () => {
                     </ImageListItem>
                   ))}
               </ImageList>
+              <Container
+                maxWidth="md"
+                component="footer"
+                sx={{
+                  borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+                  mt: 8,
+                  py: [3, 6],
+                }}
+              ></Container>
             </div>
           </Stack>
         </ThemeProvider>

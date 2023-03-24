@@ -8,14 +8,14 @@ const theme = createTheme({
     danger: "#64748B",
   },
   palette: {
-    primary: {
+    secondary: {
       light: "#EDF4FF",
       main: "#1e78ff",
       dark: "#001aa6",
       contrastText: "#fff",
       contrastThreshold: 4.5,
     },
-    secondary: {
+    primary: {
       light: "#ffb54c",
       main: "#FF8902",
       darker: "#ea4c05",

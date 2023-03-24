@@ -40,7 +40,9 @@ export const GreetingsLesson = () => {
             <Stepper activeStep={activeStep}>
               {greetingsLessonSteps.map((item, index) => (
                 <Step key={index}>
-                  <StepLabel {...item}>{item.label}</StepLabel>
+                  <StepLabel {...item}>
+                    {item.phrase ? item.phrase : item.label}
+                  </StepLabel>
                 </Step>
               ))}
             </Stepper>
@@ -48,10 +50,9 @@ export const GreetingsLesson = () => {
           <div className="lesson-container">
             <br></br>
 
-            <Stack direction={"row"} spacing={16}>
+            <Stack direction={"column"} spacing={1} justifyContent={"center"}>
+              <h1>{greetingsLessonSteps[activeStep].label}</h1>
               <div className={"image-container"}>
-                {" "}
-                <h1>{greetingsLessonSteps[activeStep].label}</h1>
                 <img
                   src={greetingsLessonSteps[activeStep].imagepath}
                   style={{ width: "250px" }}
@@ -60,6 +61,7 @@ export const GreetingsLesson = () => {
             </Stack>
 
             <br></br>
+            <br />
             <footer>
               {activeStep === greetingsLessonSteps.length - 1 ? (
                 <React.Fragment>

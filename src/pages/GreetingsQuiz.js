@@ -23,10 +23,6 @@ export const GreetingsQuiz = () => {
     correctIndex,
   } = questions[activeQuestion];
 
-  // const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
-  //
-  // const [showResult, setShowResult] = useState(false);
-
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false);
 
   const [selectedIndex, setSelectedIndex] = useState();

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
+  Container,
   FormControlLabel,
   FormGroup,
   Grid,
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Link,
   Paper,
   Stack,
   styled,
@@ -19,6 +21,7 @@ import "./familyQuiz.css";
 import SearchAppBar from "../components/SearchAppBar";
 import rightHand from "../images/right.png";
 import leftHand from "../images/left.png";
+import Button from "@mui/material/Button";
 
 export const Alphabet = () => {
   const alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -158,6 +161,25 @@ export const Alphabet = () => {
                 </ImageListItem>
               ))}
             </ImageList>
+            <Container
+              maxWidth="md"
+              component="footer"
+              sx={{
+                borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+                mt: 8,
+                py: [3, 6],
+              }}
+            >
+              <Button fullWidth variant={"contained"}>
+                <Link
+                  underline={"none"}
+                  href={"/Lessons"}
+                  style={{ color: "#fff" }}
+                >
+                  Proceed to Lessons
+                </Link>
+              </Button>
+            </Container>
           </div>
         </Stack>
       </ThemeProvider>

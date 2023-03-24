@@ -47,13 +47,19 @@ export const FamilyLesson = () => {
           </header>
           <div className="lesson-container">
             <br></br>
-            <div className="image-container">
-              <img
-                src={familyLessonSteps[activeStep].imagepath}
-                style={{ width: "250px" }}
-              ></img>
-            </div>
+
+            <Stack direction={"column"} spacing={1} justifyContent={"center"}>
+              <h1>{familyLessonSteps[activeStep].label}</h1>
+              <div className={"image-container"}>
+                <img
+                  src={familyLessonSteps[activeStep].imagepath}
+                  style={{ width: "250px" }}
+                ></img>
+              </div>
+            </Stack>
+
             <br></br>
+            <br />
             <footer>
               {activeStep === familyLessonSteps.length - 1 ? (
                 <React.Fragment>

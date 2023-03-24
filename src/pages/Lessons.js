@@ -1,67 +1,164 @@
 import React from "react";
-import { Grid, Link, Paper, Stack, styled, ThemeProvider } from "@mui/material";
+import { Container, Grid, Link, Stack, ThemeProvider } from "@mui/material";
 import theme from "../utils/theme";
 import SearchAppBar from "../components/SearchAppBar";
-import greetButton from "../images/greet2.png";
-import coloursButton from "../images/col2.png";
-import famButton from "../images/fam2.png";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import Box from "@mui/material/Box";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
-const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.primary.main,
-  // ...theme.typography.fontFamily,
-  // padding: theme.spacing(1),
-  // textAlign: "center",
-  // color: theme.palette.text.primary,
-  // lineHeight: "1.5",
-  // import greetButton from "../images/greet.png";
-  // import coloursButton from "../images/pencil.png";
-  // import famButton from "../images/fam.png";
-  backgroundColor: "#ffffff",
-  ...theme.typography.fontFamily,
-  textAlign: "center",
-  color: "#000000",
-  // height: 200,
-  lineHeight: "50px",
-  // lineHeight: "20px",
-}));
+const tiers = [
+  {
+    title: "Family",
+    price: "Start...",
+    description: ["Lesson", "Quiz"],
+    buttonText: "Lesson",
+    buttonText1: "Quiz",
+    buttonVariant: "contained",
+    link1: "/FamilyLesson",
+    link2: "/FamilyQuiz",
+    color: "#fff",
+  },
+  {
+    title: "Greetings",
+    price: "Start...",
+    description: ["Lesson", "Quiz"],
+    buttonText: "Lesson",
+    buttonText1: "Quiz",
+    buttonVariant: "contained",
+    link1: "/GreetingsLesson",
+    link2: "/GreetingsQuiz",
+    color: "#fff",
+  },
+  {
+    title: "Colours",
+    price: "Start...",
+    description: ["Lesson", "Quiz"],
+    buttonText: "Lesson",
+    buttonText1: "Quiz",
+    buttonVariant: "contained",
+    link1: "/ColoursLesson",
+    link2: "/ColoursQuiz",
+    color: "#fff",
+  },
+];
 export const Lessons = () => {
   return (
     <main>
       <ThemeProvider theme={theme}>
         <Stack direction="column" spacing={2}>
           <SearchAppBar />
-          <Item>
-            <div className="lessons-container">
-              <br></br>
-              <Grid
-                container
-                spacing={0}
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                justify="center"
-                // style={{ maxHeight: "90vh" }}
+          <div className="lessons-container">
+            <div
+              disableGutters
+              maxWidth="sm"
+              component="main"
+              sx={{ pt: 8, pb: 6 }}
+            >
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="text.primary"
+                gutterBottom
               >
-                <Grid item xs={4} style={{ maxHeight: "25vh" }}>
-                  <Link underline="none" href={"/GreetingsLesson"}>
-                    <img src={greetButton} style={{ width: "500px" }}></img>
-                  </Link>
-                </Grid>
-
-                <Grid item xs={4} style={{ maxHeight: "25vh" }}>
-                  <Link underline="none" href={"/FamilyLesson"}>
-                    <img src={famButton} style={{ width: "500px" }}></img>
-                  </Link>
-                </Grid>
-
-                <Grid item xs={4} style={{ maxHeight: "25vh" }}>
-                  <Link underline="none" href={"/ColoursLesson"}>
-                    <img src={coloursButton} style={{ width: "500px" }}></img>
-                  </Link>
-                </Grid>
+                Available Lessons
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                color="text.secondary"
+                component="p"
+              >
+                Choose a topic to start learning and then practice your skills
+                with the avaiable quizzes!
+              </Typography>
+            </div>
+            <br />
+            <br />
+            <div maxWidth="md" component="main">
+              <Grid container spacing={5} alignItems="flex-end">
+                {tiers.map((tier) => (
+                  <Grid
+                    item
+                    key={tier.title}
+                    xs={12}
+                    sm={tier.title === "Enterprise" ? 12 : 6}
+                    md={4}
+                  >
+                    <Card>
+                      <CardHeader
+                        title={tier.title}
+                        subheader={tier.subheader}
+                        titleTypographyProps={{ align: "center" }}
+                        // action=<StarIcon />
+                        subheaderTypographyProps={{
+                          align: "center",
+                        }}
+                        sx={{
+                          backgroundColor: (theme) =>
+                            theme.palette.mode === "light"
+                              ? theme.palette.grey[200]
+                              : theme.palette.grey[700],
+                        }}
+                      />
+                      <CardContent>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "baseline",
+                            mb: 2,
+                          }}
+                        >
+                          <Typography
+                            component="h2"
+                            variant="h6"
+                            color="text.primary"
+                          >
+                            <LightbulbIcon fontSize={"large"} />
+                          </Typography>
+                        </Box>
+                      </CardContent>
+                      <CardActions>
+                        <Button fullWidth variant={tier.buttonVariant}>
+                          <Link
+                            underline={"none"}
+                            href={tier.link1}
+                            style={{ color: tier.color }}
+                          >
+                            {tier.buttonText}
+                          </Link>
+                        </Button>
+                        <Button fullWidth variant={"outlined"}>
+                          <Link
+                            underline={"none"}
+                            href={tier.link2}
+                            // style={{ color: tier.color }}
+                          >
+                            {tier.buttonText1}
+                          </Link>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
             </div>
-          </Item>{" "}
+            <Container
+              maxWidth="md"
+              component="footer"
+              sx={{
+                borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+                mt: 8,
+                py: [3, 6],
+              }}
+            ></Container>
+          </div>
         </Stack>
       </ThemeProvider>
     </main>

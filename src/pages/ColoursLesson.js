@@ -47,13 +47,19 @@ export const ColoursLesson = () => {
           </header>
           <div className="lesson-container">
             <br></br>
-            <div className="image-container">
-              <img
-                src={coloursLessonSteps[activeStep].imagepath}
-                style={{ width: "250px" }}
-              ></img>
-            </div>
+
+            <Stack direction={"column"} spacing={1} justifyContent={"center"}>
+              <h1>{coloursLessonSteps[activeStep].label}</h1>
+              <div className={"image-container"}>
+                <img
+                  src={coloursLessonSteps[activeStep].imagepath}
+                  style={{ width: "250px" }}
+                ></img>
+              </div>
+            </Stack>
+
             <br></br>
+            <br />
             <footer>
               {activeStep === coloursLessonSteps.length - 1 ? (
                 <React.Fragment>
@@ -102,7 +108,6 @@ export const ColoursLesson = () => {
                 </React.Fragment>
               )}
             </footer>
-            {/*</Box>*/}
           </div>
         </Stack>
       </ThemeProvider>

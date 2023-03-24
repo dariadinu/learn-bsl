@@ -25,8 +25,8 @@ export const Routing = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/game1" element={<App />} />
-        <Route path="/new-game" element={<NewPage />} />
+        <Route path="/GuessLetter" element={<App />} />
+        <Route path="/GuessWord" element={<NewPage />} />
         <Route path="/MemoryGame" element={<MemoryGame />} />
         <Route path="/Lessons" element={<Lessons />} />
         <Route path="/Games" element={<Games />} />
