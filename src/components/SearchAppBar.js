@@ -50,7 +50,7 @@ export default function SearchAppBar() {
                 underline={"none"}
                 style={{ color: "#FFF" }}
               >
-                Lessons
+                Games
               </Link>{" "}
             </Typography>
 
